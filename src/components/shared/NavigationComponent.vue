@@ -1,12 +1,12 @@
 <template>
     <div class="flex flex-row items-center justify-between md:flex-col md:items-start md:justify-start">
-        <h2 class="text-2xl font-bold text-blue-600 mb-0 md:mb-8">CV Manager</h2>
+        <h2 class="text-2xl font-bold text-blue-600 mb-0 md:mb-8 dark:text-white">CV Manager</h2>
     </div>
     <nav class="w-auto md:w-full">
         <ul class="flex flex-row md:flex-col space-x-4 md:space-x-0 space-y-0 md:space-y-4">
             <li>
                 <router-link to="/"
-                    class="flex items-center text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 py-2">
+                    class="flex items-center text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 py-2 dark:text-white">
                     <svg class="w-5 h-5 mr-0 md:mr-3 text-blue-500" fill="none" stroke="currentColor"
                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -16,8 +16,8 @@
                 </router-link>
             </li>
             <li>
-                <router-link to="/new-entry"
-                    class="flex items-center text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 py-2">
+                <router-link to="/new"
+                    class="flex items-center text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 py-2 dark:text-white">
                     <svg class="w-5 h-5 mr-0 md:mr-3 text-blue-500" fill="none" stroke="currentColor"
                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

@@ -1,8 +1,8 @@
 import { createMemoryHistory, createRouter } from 'vue-router'
 
 import LayoutView from '@/views/LayoutView.vue'
-import MainView from '@/views/MainView.vue'
-import NewEntryView from '@/views/NewEntryView.vue'
+import NewEntryComponent from '@/components/main/NewEntryComponent.vue'
+import TableComponent from '@/components/main/TableComponent.vue'
 
 const routes = [
     {
@@ -11,11 +11,11 @@ const routes = [
         children: [
             {
                 path: '',
-                component: MainView
+                component: TableComponent
             },
             {
-                path: 'new-entry',
-                component: NewEntryView
+                path: 'new',
+                component: NewEntryComponent
             }
         ]
     },
