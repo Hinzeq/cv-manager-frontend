@@ -3,11 +3,7 @@
         <aside class="w=1/5 bg-white shadow-lg p-8 rounded-r-xl border-gray-200">
             <NavigationComponent />
         </aside>
-        <aside class="w=4/5">
-            <div>
-                <router-view></router-view>
-            </div>
-        </aside>
+        <router-view></router-view>
     </div>
 </template>
 

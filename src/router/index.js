@@ -2,7 +2,7 @@ import { createMemoryHistory, createRouter } from 'vue-router'
 
 import LayoutView from '@/views/LayoutView.vue'
 import MainView from '@/views/MainView.vue'
-import SummaryView from '@/views/SummaryView.vue'
+import NewEntryView from '@/views/NewEntryView.vue'
 
 const routes = [
     {
@@ -14,8 +14,8 @@ const routes = [
                 component: MainView
             },
             {
-                path: 'summary',
-                component: SummaryView
+                path: 'new-entry',
+                component: NewEntryView
             }
         ]
     },
