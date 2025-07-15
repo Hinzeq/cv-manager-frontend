@@ -1,7 +1,10 @@
 <template>
     <main class="flex-1 p-8 overflow-x-auto pt-[90px] md:pt-8 md:ml-0 ">
         <div class="bg-white p-6 rounded-lg shadow-md overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-200">
+            <p v-if="loading" class="px-12 py-12 text-gray-700 text-lg font-semibold">Loading...</p>
+            <p v-if="error" class="text-red-900">{{ error }}</p>
+
+            <table v-if="applications.length > 0" class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
                     <tr>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -31,9 +34,6 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    <p v-if="loading">Loading...</p>
-                    <p v-if="error">{{ error }}</p>
-
                     <tr v-for="application in applications" :key="application.id">
                         <td class="px-6 py-4 whitespace-nowrap">{{ application.company }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ application.position }}</td>
@@ -66,6 +66,11 @@
                     </tr>
                 </tbody>
             </table>
+
+             <p v-if="!loading && !error && applications.length == 0" class="px-12 py-12 text-gray-700 text-lg font-semibold">
+                No data
+             </p>
+            
         </div>
     </main>
 </template>
@@ -104,7 +109,7 @@ export default {
             fetchApplications();
         });
 
-        return {applications};
+        return {applications, loading, error};
     }
 }
 </script>
