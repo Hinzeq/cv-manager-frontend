@@ -31,22 +31,38 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap">Company</td>
-                        <td class="px-6 py-4 whitespace-nowrap">Position</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Application date</td>
+                    <p v-if="loading">Loading...</p>
+                    <p v-if="error">{{ error }}</p>
+
+                    <tr v-for="application in applications" :key="application.id">
+                        <td class="px-6 py-4 whitespace-nowrap">{{ application.company }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ application.position }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ application.applicationDate }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <span
-                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                                Status
+                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full"
+                                :class="{
+                                    'bg-gray-100 text-gray-800': ['send'].includes(application.status),
+                                    'bg-green-100 text-green-800': ['offer'].includes(application.status),
+                                    'bg-yellow-100 text-yellow-800': ['in progress', 'conversation'].includes(application.status),
+                                    'bg-red-100 text-red-800': ['rejected', 'closed'].includes(application.status),
+                                }"
+                            >
+                                {{ application.status }}
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Job url</a>
+                            <a
+                                :href="application.jobPostingUrl"
+                                class="font-medium text-blue-600 hover:underline"
+                                target="_blank"
+                            >
+                                Link
+                            </a>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap">Expected salary</td>
-                        <td class="px-6 py-4 whitespace-nowrap">Seniority level</td>
-                        <td class="px-6 py-4 whitespace-nowrap">Informations</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ application.expectedSalary }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ application.seniorityLevel }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ application.informations }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -55,7 +71,40 @@
 </template>
 
 <script>
+import { ref, onMounted } from 'vue';
+
 export default {
-    name: "TableComponent"
+    name: "TableComponent",
+    setup() {
+        const applications = ref([]);
+        const loading = ref(true);
+        const error = ref(null);
+
+        const fetchApplications = async () => {
+            try {
+                const response = await fetch('http://cv-manager-backend.localhost/api/applications?page=1');
+                if (!response.ok) {
+                    throw new Error(`HTTP error: ${response.status}`);
+                }
+
+                const responseJson = await response.json();
+                if (!responseJson.member) {
+                    throw new Error('Not found Data')
+                }
+
+                applications.value = responseJson.member;
+            } catch (err) {
+                error.value = 'Something went wrong: ' + err.message;
+            } finally {
+                loading.value = false;
+            }
+        };
+
+        onMounted(() => {
+            fetchApplications();
+        });
+
+        return {applications};
+    }
 }
 </script>
