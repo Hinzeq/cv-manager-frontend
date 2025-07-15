@@ -1,38 +1,40 @@
 <template>
   <div class="min-h-screen bg-gray-100 flex flex-col md:flex-row">
-    <aside class="w-full bg-white shadow-lg p-6 border-r border-gray-200 flex flex-col justify-between 
-                  fixed top-0 left-0 right-0 z-10 md:static md:w-1/5 md:border-b-0">
-      <div class="flex flex-row items-center justify-between md:flex-col md:items-start md:justify-start">
-        <h2 class="text-2xl font-bold text-blue-600 mb-0 md:mb-8">Moje CV</h2>
-        <nav class="w-auto md:w-full">
-          <ul class="flex flex-row md:flex-col space-x-4 md:space-x-0 space-y-0 md:space-y-4">
-            <li>
-              <a href="#" class="flex items-center text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">
-                <svg class="w-5 h-5 mr-0 md:mr-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001 1h3v-3m0 0h-3m3 0h3m-3 0V9m-4-4v10a1 1 0 001 1h3"></path></svg>
-                <span class="hidden md:inline">Dashboard</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="flex items-center text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">
-                <svg class="w-5 h-5 mr-0 md:mr-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path></svg>
-                <span class="hidden md:inline">Wysłane CV</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="flex items-center text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">
-                <svg class="w-5 h-5 mr-0 md:mr-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
-                <span class="hidden md:inline">Ustawienia</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+    <aside class="w-full bg-white shadow-lg p-6 border-r border-gray-200 
+                  md:w-1/5 md:relative md:border-b-0 md:flex md:flex-col md:justify-between 
+                  fixed top-0 left-0 right-0 z-10 flex flex-row items-center justify-between border-b">
+      
+      <h2 class="text-2xl font-bold text-blue-600 mb-0 md:mb-8 md:text-left">Moje CV</h2>
+      
+      <nav class="w-auto md:w-full">
+        <ul class="flex flex-row space-x-4 md:flex-col md:space-x-0 md:space-y-4">
+          <li>
+            <router-link to="/" class="flex items-center text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 py-2">
+              <svg class="w-5 h-5 mr-0 md:mr-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001 1h3v-3m0 0h-3m3 0h3m-3 0V9m-4-4v10a1 1 0 001 1h3"></path></svg>
+              <span class="hidden md:inline">Dashboard</span>
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/wyslane-cv" class="flex items-center text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 py-2">
+              <svg class="w-5 h-5 mr-0 md:mr-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path></svg>
+              <span class="hidden md:inline">Wysłane CV</span>
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/ustawienia" class="flex items-center text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 py-2">
+              <svg class="w-5 h-5 mr-0 md:mr-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+              <span class="hidden md:inline">Ustawienia</span>
+            </router-link>
+          </li>
+        </ul>
+      </nav>
+      
       <div class="hidden md:block text-sm text-gray-500 mt-8">
         <p>&copy; 2025 Moja Aplikacja CV</p>
       </div>
     </aside>
 
-    <main class="flex-1 p-8 overflow-y-auto pt-[90px] md:pt-8">
+    <main class="flex-1 p-8 overflow-y-auto pt-[90px] md:pt-8 md:ml-0">
       <h1 class="text-3xl font-bold text-gray-800 mb-6">Zarządzanie Wysłanymi CV</h1>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
