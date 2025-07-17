@@ -112,14 +112,9 @@ export default {
 
                 successMessage.value = "Created successfully";
             } catch (err) {
-                // console.log(err)
                 errorMessage.value = err.message;
             } finally {
                 isLoading.value = false;
-                // console.log(
-                //     successMessage,
-                //     errorMessage
-                // )
             }
         }
 
