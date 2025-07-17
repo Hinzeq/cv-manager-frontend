@@ -1,16 +1,29 @@
-import { createMemoryHistory, createRouter } from 'vue-router'
+import { createWebHistory, createRouter } from 'vue-router'
 
-import HomeView from '../views/HomeView.vue'
-import AboutView from '../views/AboutView.vue'
+import LayoutView from '@/views/LayoutView.vue'
+import NewEntryComponent from '@/components/main/NewEntryComponent.vue'
+import TableComponent from '@/components/main/TableComponent.vue'
 
 const routes = [
-  { path: '/', component: HomeView },
-  { path: '/about', component: AboutView },
+    {
+        path: '/',
+        component: LayoutView,
+        children: [
+            {
+                path: '',
+                component: TableComponent
+            },
+            {
+                path: 'new',
+                component: NewEntryComponent
+            }
+        ]
+    },
 ]
 
 const router = createRouter({
-  history: createMemoryHistory(),
-  routes,
+    history: createWebHistory(),
+    routes,
 })
 
 export default router
